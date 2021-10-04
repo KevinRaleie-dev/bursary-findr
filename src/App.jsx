@@ -14,9 +14,10 @@ const fetcher = async (url) => {
 }
 
 function App() {
-  const URL = 'http://localhost:5000/bursaries/?search=';
+  const devURL = 'http://localhost:5000/bursaries/?search=';
+  const prodURL = 'https://bursary-findr.herokuapp.com/bursaries/?search=';
   const [search, setSearch] = useState('');
-  const { data, error, mutate } = useSwr(`${URL}${search}`, fetcher);
+  const { data, error, mutate } = useSwr(`${prodURL}${search}`, fetcher);
 
   console.log(Date.now().toLocaleString())
 
@@ -39,10 +40,6 @@ function App() {
     setSearch(month);
   }
 
-  const handleSearch = async () => {
-    await mutate(`${URL}${search}`);
-  }
-
   return (
     <React.Fragment>
       <Container>
@@ -55,14 +52,14 @@ function App() {
               height: 300
             }}
           />
-          <form onSubmit={handleSearch} className="grid place-items-center space-y-2 w-full">
+          <div className="grid place-items-center space-y-2 w-full">
             <p className="text-sm text-gray-500">Search and find bursaries in South Africa by the month they'll be closing.</p>
             <input className="hover:shadow text-sm border px-3 w-1/2 h-12 rounded-full focus:outline-none" 
-              type="text" 
+              type="search" 
               placeholder="Try searching 'Bursaries closing in october'..."
               onChange={(e) => setSearch(e.currentTarget.value)}
               />
-          </form>
+          </div>
       </Container>
       <section className="mt-3">
         <div className="flex flex-row justify-evenly">
