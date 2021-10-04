@@ -17,7 +17,7 @@ function App() {
   const devURL = 'http://localhost:4000/bursaries/?search=';
   const prodURL = 'https://bursary-findr.herokuapp.com/bursaries/?search=';
   const [search, setSearch] = useState('');
-  const { data, error, mutate } = useSwr(`${devURL}${search}`, fetcher);
+  const { data, error, mutate } = useSwr(`${prodURL}${search}`, fetcher);
 
   const months = [
     'january', 
