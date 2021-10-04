@@ -6,7 +6,7 @@ export const Container = ({children}) => {
         <React.Fragment>
             <header>
                 <nav className="space-y-2">
-                    <div className="flex flex-row justify-between items-center p-5 px-10">
+                    <div className="flex flex-row justify-between items-center p-2 px-5 sm:p-5 sm:px-10">
                         <h1 className="font-black text-xl">
                             Bursary findr
                         </h1>
