@@ -16,8 +16,9 @@ const fetcher = async (url) => {
 function App() {
   const devURL = 'http://localhost:4000/bursaries/?search=';
   const prodURL = 'https://bursary-findr.herokuapp.com/bursaries/?search=';
+  const env = process.env.NODE_ENV !== 'production' ? devURL : prodURL;
   const [search, setSearch] = useState('');
-  const { data, error, mutate } = useSwr(`${prodURL}${search}`, fetcher);
+  const { data, error, mutate } = useSwr(`${env}${search}`, fetcher);
 
   const months = [
     'january', 

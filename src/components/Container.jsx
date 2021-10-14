@@ -12,7 +12,7 @@ export const Container = ({children}) => {
                         </h1>
                         <div>
                             <a href="https://github.com/KevinRaleie-dev">
-                                <FiGithub className="w-6 h-6" />
+                                <FiGithub className="w-6 h-6 hover:opacity-60 transition-opacity" />
                             </a>
                         </div>
                     </div>
