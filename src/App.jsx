@@ -61,7 +61,7 @@ function App() {
         <div className="grid grid-flow-col grid-cols-3 grid-rows-4 gap-2 px-2 sm:flex sm:flex-row sm:justify-evenly">
           {months.map((month, i) => (
             <div key={i} onClick={() => handlePinSearch(month)} >
-              <p className="bg-green-300 px-2 rounded-full text-gray-800 cursor-pointer text-center">
+              <p className="bg-blue-500 px-2 rounded-full text-gray-800 cursor-pointer text-center">
                 {month}
               </p> 
             </div>
