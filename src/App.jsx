@@ -21,18 +21,18 @@ function App() {
   const { data, error, mutate } = useSwr(`${env}${search}`, fetcher);
 
   const months = [
-    'january', 
-    'february', 
-    'march', 
-    'april', 
-    'may', 
-    'june', 
-    'july', 
-    'august', 
-    'september', 
-    'october', 
-    'november', 
-    'december'
+    'January 2022', 
+    'February 2022', 
+    'March', 
+    'April', 
+    'May', 
+    'June', 
+    'July', 
+    'August', 
+    'September', 
+    'October', 
+    'November', 
+    'December'
   ];
 
   const handlePinSearch = (month) => {
@@ -49,10 +49,13 @@ function App() {
             play
           />
           <div className="grid place-items-center space-y-2 w-full">
-            <p className="text-sm text-gray-500 text-center">Search and find bursaries in South Africa by the month they'll be closing.</p>
+            {/* <p className="text-sm text-gray-500 text-center">Search and find bursaries in South Africa by the month they'll be closing.</p> */}
+            <p className="text-lg text-black font-semibold text-center">✨What's New✨</p>
+            <p className="text-sm text-center font-medium opacity-80">👉 New bursaries for the year 2022!</p>
+            <p className="text-sm text-center font-medium opacity-80">Click on January and February or search 🤫 Don't say we didn't tell you.</p>
             <input className="hover:shadow text-sm border px-3 w-80 h-10 sm:w-1/2 sm:h-12 rounded-full focus:outline-none" 
               type="search" 
-              placeholder="Try searching 'Bursaries closing in october'..."
+              placeholder="Try searching 'Bursaries closing in January 2022'..."
               onChange={(e) => setSearch(e.currentTarget.value)}
               />
           </div>
@@ -61,7 +64,10 @@ function App() {
         <div className="grid grid-flow-col grid-cols-3 grid-rows-4 gap-2 px-2 sm:flex sm:flex-row sm:justify-evenly">
           {months.map((month, i) => (
             <div key={i} onClick={() => handlePinSearch(month)} >
-              <p className="bg-green-300 px-2 rounded-full text-gray-800 cursor-pointer text-center">
+              <p className={`${month === 'January 2022' || month === 'February 2022' ? 
+              'px-3 py-1 rounded-full text-white cursor-pointer text-center bg-blue-400 ' 
+              : 'bg-green-300 px-3 py-1 rounded-full text-gray-800 cursor-pointer text-center'} 
+              `}>
                 {month}
               </p> 
             </div>
