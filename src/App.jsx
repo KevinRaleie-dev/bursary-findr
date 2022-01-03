@@ -74,6 +74,9 @@ function App() {
   ];
 
   const handlePinSearch = (month) => {
+    if (month === '') {
+      return;
+    }
     setSearch(month);
   }
 
@@ -101,8 +104,9 @@ function App() {
       <section className="mt-3">
         <div className="grid grid-flow-col grid-cols-3 grid-rows-4 gap-2 px-2 sm:flex sm:flex-row sm:justify-evenly">
           {months.map((m, i) => (
-            <div key={i} onClick={() => handlePinSearch(m.month)} >
+            <div key={i}>
               <button
+              onClick={() => handlePinSearch(m.month)}
               type='button'
               disabled={m.available === false ? true : false}
               className={ m.available === false ? 'bg-green-300 px-3 py-1 rounded-full text-gray-800 text-center cursor-not-allowed'
