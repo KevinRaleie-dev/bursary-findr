@@ -20,19 +20,57 @@ function App() {
   const [search, setSearch] = useState('');
   const { data, error, mutate } = useSwr(`${env}${search}`, fetcher);
 
+
+
   const months = [
-    'January', 
-    'February', 
-    'March', 
-    'April', 
-    'May', 
-    'June', 
-    'July', 
-    'August', 
-    'September', 
-    'October', 
-    'November', 
-    'December'
+    {
+      month: 'January',
+      available: true,
+    },
+    {
+      month: 'February',
+      available: true,
+    },
+    {
+      month: 'March',
+      available: false,
+    },
+    {
+      month: 'April',
+      available: false,
+    },
+    {
+      month: 'May',
+      available: false,
+    },
+    {
+      month: 'June',
+      available: false,
+    },
+    {
+      month: 'July',
+      available: false,
+    },
+    {
+      month: 'August',
+      available: false,
+    },
+    {
+      month: 'September',
+      available: false,
+    },
+    {
+      month: 'October',
+      available: false,
+    },
+    {
+      month: 'November',
+      available: false,
+    },
+    {
+      month: 'December',
+      available: false,
+    },
   ];
 
   const handlePinSearch = (month) => {
@@ -62,11 +100,15 @@ function App() {
       </Container>
       <section className="mt-3">
         <div className="grid grid-flow-col grid-cols-3 grid-rows-4 gap-2 px-2 sm:flex sm:flex-row sm:justify-evenly">
-          {months.map((month, i) => (
-            <div key={i} onClick={() => handlePinSearch(month)} >
-              <p className='bg-green-300 px-3 py-1 rounded-full text-gray-800 cursor-pointer text-center'>
-                {month}
-              </p> 
+          {months.map((m, i) => (
+            <div key={i} onClick={() => handlePinSearch(m.month)} >
+              <button
+              type='button'
+              disabled={m.available === false ? true : false}
+              className={ m.available === false ? 'bg-green-300 px-3 py-1 rounded-full text-gray-800 text-center cursor-not-allowed'
+             : 'bg-green-300 px-3 py-1 rounded-full text-gray-800 text-center'}>
+                {m.month}
+              </button> 
             </div>
           ))}
         </div>
