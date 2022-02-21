@@ -33,11 +33,11 @@ function App() {
     },
     {
       month: 'March',
-      available: false,
+      available: true,
     },
     {
       month: 'April',
-      available: false,
+      available: true,
     },
     {
       month: 'May',
