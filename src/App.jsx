@@ -21,25 +21,26 @@ function App() {
   const env = process.env.NODE_ENV !== 'production' ? devURL : prodURL;
   const [search, setSearch] = useState('');
   const { data, error, mutate } = useSwr(`${env}${search}`, fetcher);
+  const currentMonth = new Date().getMonth();
 
 
 
   const months = [
     {
       month: 'January',
-      available: true,
+      available: false,
     },
     {
       month: 'February',
-      available: true,
+      available: false,
     },
     {
       month: 'March',
-      available: true,
+      available: false,
     },
     {
       month: 'April',
-      available: true,
+      available: false,
     },
     {
       month: 'May',
@@ -47,31 +48,31 @@ function App() {
     },
     {
       month: 'June',
-      available: false,
+      available: true,
     },
     {
       month: 'July',
-      available: false,
+      available: true,
     },
     {
       month: 'August',
-      available: false,
+      available: true,
     },
     {
       month: 'September',
-      available: false,
+      available: true,
     },
     {
       month: 'October',
-      available: false,
+      available: true,
     },
     {
       month: 'November',
-      available: false,
+      available: true,
     },
     {
       month: 'December',
-      available: false,
+      available: true,
     },
   ];
 
@@ -91,8 +92,7 @@ function App() {
             animationData={student}
             play
           />
-          <div className="grid place-items-center space-y-2 w-full">
-            {/* <p className="text-sm text-gray-500 text-center">Search and find bursaries in South Africa by the month they'll be closing.</p> */}
+          <div className="grid place-items-center space-y-2 w-full">            
             <p className="text-lg text-black font-semibold text-center">✨What's New✨</p>
             <p className="text-sm text-center font-medium opacity-80">🔔 New bursaries for the year 2022!</p>        
             <input className="hover:shadow text-sm border px-3 w-80 h-10 sm:w-1/2 sm:h-12 rounded-full focus:outline-none" 
@@ -103,15 +103,15 @@ function App() {
           </div>
       </Container>
       <section className="mt-3">
-        <div className="grid grid-flow-col grid-cols-3 grid-rows-4 gap-2 px-2 sm:flex sm:flex-row sm:justify-evenly">
+        <div className="flex flex-row overflow-x-scroll space-x-5 py-2 px-2 md:flex md:flex-row md:justify-evenly">
           {months.map((m, i) => (
-            <div key={i}>
+            <div key={i} id={m.month}>
               <button
               onClick={() => handlePinSearch(m.month)}
               type='button'
               disabled={m.available === false ? true : false}
-              className={ m.available === false ? 'bg-green-300 px-3 py-1 rounded-full text-gray-800 text-center cursor-not-allowed'
-             : 'bg-green-300 px-3 py-1 rounded-full text-gray-800 text-center'}>
+              className={ m.available === false ? 'bg-green-100 px-3 py-1 rounded-full text-gray-400 text-center cursor-not-allowed'
+             : currentMonth === i ? 'bg-black px-3 py-1 rounded-full text-white text-center': 'bg-green-300 px-3 py-1 rounded-full text-gray-800 text-center'}>
                 {m.month}
               </button> 
             </div>
